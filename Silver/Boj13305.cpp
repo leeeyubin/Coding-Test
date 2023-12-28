@@ -16,12 +16,12 @@ int main() {
 		cin >> node[i];
 	}
 
-	long long currNode = node[0];
+	long long minNode = node[0];
 	long long res = 0;
 
 	for (int i = 0; i < N - 1; i++) {
-		currNode = min(currNode, (long long)node[i]);
-		res += distance[i] * currNode;
+		minNode = min(minNode, (long long)node[i]);
+		res += distance[i] * minNode;
 	}
 
 	cout << res << endl;
