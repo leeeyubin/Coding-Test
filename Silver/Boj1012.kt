@@ -8,17 +8,17 @@ fun main() {
 
     repeat(t) {
         val (m, n, k) = bufferedReader.readLine().split(" ").map { it.toInt() }
-        val graph = Array(m+1) { IntArray(n+1) }
-        val visited = Array(m+1) { BooleanArray(n+1) }
+        val graph = Array(n+1) { IntArray(m+1) }
+        val visited = Array(n+1) { BooleanArray(m+1) }
 
         repeat(k) {
            val (x, y) = bufferedReader.readLine().split(" ").map { it.toInt() }
-            graph[x][y] = 1
+            graph[y][x] = 1
         }
-
+        
         var count = 0
-        for (i in 0..<m) {
-            for(j in 0..<n) {
+        for (i in 0..<n) {
+            for(j in 0..<m) {
                 if(graph[i][j] == 1 && !visited[i][j]){
                     bfs(x = i, y = j, graph = graph, visited = visited)
                     count ++
@@ -45,8 +45,8 @@ private fun bfs(x: Int, y: Int, graph: Array<IntArray>, visited: Array<BooleanAr
             val nextX = currentX + dx[i]
             val nextY = currentY + dy[i]
 
-            if(nextX in 0 .. graph.size && nextY in 0 ..graph[0].size) {
-                if(graph[nextX][nextY]== 1 && !visited[nextX][nextY]){
+            if(nextX in 0 .. graph.size && nextY in 0 ..graph[0].size) { 
+                if(graph[nextX][nextY]== 1 && !visited[nextX][nextY]){ 
                     queue.addLast(Pair(nextX, nextY))
                     visited[nextX][nextY] = true
                 }
