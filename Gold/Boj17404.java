@@ -18,16 +18,13 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < 3; i++) {
-            dp[0][i] = rgb[0][i];
-        }
-
         int min = MAX_VALUE;
 
         for (int first = 0; first < 3; first++) {
 
             for (int k = 0; k < 3; k++) {
-                dp[0][k] = (k == first) ? rgb[0][k] : MAX_VALUE;
+                if (k == first) dp[0][k] = rgb[0][k];
+                else dp[0][k] = MAX_VALUE;
             }
 
             for (int i = 1; i < N; i++) {
@@ -41,7 +38,7 @@ public class Main {
                 min = Math.min(min, dp[N - 1][last]);
             }
         }
-
+        
         System.out.println(min);
 
         scanner.close();
