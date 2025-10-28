@@ -4,7 +4,7 @@ class Solution {
     public int solution1(int[] numbers, int target) {
         int answer = 0;
 
-        // BFS를 사용하기 위한 큐 생성
+        // BFS를 사용하기 위한 Queue 생성
         Queue<int[]> queue = new LinkedList<>();
         
         // 큐는 [레벨, 합계]를 담을 수 있도록 선언 
